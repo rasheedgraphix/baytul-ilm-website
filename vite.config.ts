@@ -5,7 +5,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: process.env.VITE_BASE || '/Baytulilm-Ai-Website/',
+    base: process.env.VITE_BASE || '/baytul-ilm-website/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
