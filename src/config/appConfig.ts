@@ -4,19 +4,22 @@
  */
 
 // CONFIGURABLE APK DOWNLOAD URL
-// Official APK Download Link for Baytul Ilm AI v1.3.6
-export const APK_DOWNLOAD_URL: string = "https://github.com/rasheedgraphix/Baytulilm-Ai/releases/download/v1.3.6/Baytul.Ilm.AI.1.apk";
+// Official APK Download Link for Baytul Ilm AI v1.4.4
+export const APK_PURE_URL: string = "https://apkpure.com/baytul-ilm-ai/com.baytulilmai.app";
+export const APK_DOWNLOAD_URL: string = "https://github.com/rasheedgraphix/Baytulilm-Ai/releases/download/v1.4.4/Baytul.Ilm.AI.2.apk";
 
 export const APP_CONFIG = {
   appName: "Baytul Ilm AI",
   appTagline: "Comprehensive Android Islamic Education & Dars-e-Nizami Learning Platform",
   packageName: "com.baytulilmai.app",
-  version: "1.3.6",
-  versionCode: 9,
-  releaseDate: "Official Release (v1.3.6)",
-  fileSize: "33.9 MB",
+  version: "1.4.4",
+  versionCode: 16,
+  releaseDate: "Official Release (v1.4.4)",
+  fileSize: "53 MB",
   minAndroidVersion: "Android 7.0+ (Nougat, API Level 24+)",
   targetAndroidVersion: "Android 14 (API Level 34)",
+  apkPureUrl: "https://apkpure.com/baytul-ilm-ai/com.baytulilmai.app",
+  directApkUrl: "https://github.com/rasheedgraphix/Baytulilm-Ai/releases/download/v1.4.4/Baytul.Ilm.AI.2.apk",
   
   // SHA-256 Checksum: Verified release checksum
   sha256Checksum: "f2c3d8e192a0487b3e1205c091ad5463728f1109a27e36125439a1c029348e71",

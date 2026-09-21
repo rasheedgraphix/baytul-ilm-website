@@ -38,7 +38,7 @@ export const InstallationGuide: React.FC = () => {
     <section className="py-16 bg-white dark:bg-slate-900 border-t border-slate-200/80 dark:border-slate-800" id="installation-guide">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <SectionHeader
-          badge={language === 'ur' ? 'آسان انسٹالیشن' : 'Simple Setup'}
+          badge={language === 'ur' ? 'آسان انسٹالیشن' : language === 'ps' ? 'آسانه انسټالول' : 'Simple Setup'}
           title={t('installGuideTitle')}
           arabicTitle="طَرِيقَةُ تَثْبِيتِ التَّطْبِيق"
           subtitle={t('installGuideSubtitle')}

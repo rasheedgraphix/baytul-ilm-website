@@ -53,6 +53,51 @@ export const Footer: React.FC = () => {
           {/* Quick Links */}
           <div className="space-y-3">
             <h4 className="text-sm font-bold text-white uppercase tracking-wider text-emerald-400 font-urdu">
+              {language === 'ur' ? 'شعبہ جات و کتب' : language === 'ps' ? 'څانګې او کتابونه' : 'Academic Sections'}
+            </h4>
+            <ul className="space-y-2 text-xs font-medium text-slate-400 font-urdu">
+              <li>
+                <Link to="/dars-e-nizami" className="hover:text-amber-300 transition-colors">درسِ نظامی (۸ سالہ نصاب)</Link>
+              </li>
+              <li>
+                <Link to="/quran" className="hover:text-amber-300 transition-colors">قرآن مجید (۱۶ و ۱۵ سطری)</Link>
+              </li>
+              <li>
+                <Link to="/tafaseer" className="hover:text-amber-300 transition-colors">تفاسیرِ قرآن (ابن کثیر، معارف)</Link>
+              </li>
+              <li>
+                <Link to="/lughat" className="hover:text-amber-300 transition-colors">معاجم و لغات (عربی و اردو)</Link>
+              </li>
+              <li>
+                <Link to="/fatawa" className="hover:text-amber-300 transition-colors">فتاویٰ و فقہی ذخیرہ</Link>
+              </li>
+              <li>
+                <Link to="/tareekh" className="hover:text-amber-300 transition-colors text-amber-300 font-bold">تاریخ و سیرت (طبری، ابن خلدون)</Link>
+              </li>
+              <li>
+                <Link to="/tajweed-lil-huffaz" className="hover:text-teal-300 transition-colors text-teal-300 font-bold">تجوید للحفاظ (جمال القرآن، فوائد مکیہ)</Link>
+              </li>
+              <li>
+                <Link to="/tajweed-lil-ulama" className="hover:text-sky-300 transition-colors text-sky-300 font-bold">تجوید للعلماء (المقدمۃ الجزریۃ، علوم القرآن)</Link>
+              </li>
+              <li>
+                <Link to="/prayer-times" className="hover:text-emerald-300 transition-colors text-emerald-300 font-bold">اوقاتِ نماز (جامعہ علوم اسلامیہ کراچی)</Link>
+              </li>
+              <li>
+                <Link to="/duas" className="hover:text-amber-300 transition-colors text-amber-300 font-bold">۱۰۰ مسنون و قرآنی دعائیں (مکمل متن)</Link>
+              </li>
+              <li>
+                <Link to="/haramain-live" className="hover:text-red-400 text-red-300 transition-colors flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                  <span>حرمین شریفین ۲۴/۷ لائیو</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Navigation Links */}
+          <div className="space-y-3">
+            <h4 className="text-sm font-bold text-white uppercase tracking-wider text-emerald-400 font-urdu">
               {t('footerNavigation')}
             </h4>
             <ul className="space-y-2 text-xs font-medium text-slate-400 font-urdu">
@@ -60,13 +105,16 @@ export const Footer: React.FC = () => {
                 <Link to="/" className="hover:text-amber-300 transition-colors">{t('navHome')}</Link>
               </li>
               <li>
+                <Link to="/library" className="hover:text-amber-300 transition-colors text-emerald-400 font-bold">{t('navLibrary')}</Link>
+              </li>
+              <li>
+                <Link to="/download" className="hover:text-amber-300 transition-colors">{t('navDownload')}</Link>
+              </li>
+              <li>
                 <Link to="/features" className="hover:text-amber-300 transition-colors">{t('navFeatures')}</Link>
               </li>
               <li>
                 <Link to="/screenshots" className="hover:text-amber-300 transition-colors">{t('navScreenshots')}</Link>
-              </li>
-              <li>
-                <Link to="/download" className="hover:text-amber-300 transition-colors">{t('navDownload')}</Link>
               </li>
             </ul>
           </div>
@@ -84,7 +132,17 @@ export const Footer: React.FC = () => {
                 <Link to="/contact" className="hover:text-amber-300 transition-colors">{t('navContact')}</Link>
               </li>
               <li>
-                <a href="#installation-guide" className="hover:text-amber-300 transition-colors">
+                <a
+                  href="/#installation-guide"
+                  onClick={(e) => {
+                    const target = document.getElementById('installation-guide');
+                    if (target) {
+                      e.preventDefault();
+                      target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  className="hover:text-amber-300 transition-colors cursor-pointer"
+                >
                   {language === 'ur' ? 'انسٹالیشن گائیڈ' : language === 'ps' ? 'د انسټالولو لارښود' : 'Installation Guide'}
                 </a>
               </li>
@@ -104,6 +162,8 @@ export const Footer: React.FC = () => {
               <p className="text-[11px] text-slate-400 leading-tight font-urdu">
                 {language === 'ur'
                   ? 'بیت العلم AI آفیشل ریلیز پیکج ہے۔ ڈاؤن لوڈ کے بعد براہ کرم SHA-256 چیک سم کی تصدیق کر سکتے ہیں۔'
+                  : language === 'ps'
+                  ? 'بیت العلم AI یو رسمي باوري اپلیکیشن دی. له ډاونلوډ وروسته کولای شئ د SHA-256 کوډ پخلی کړئ.'
                   : 'APK is provided as an official release build. Users should verify the SHA-256 checksum after downloading.'}
               </p>
               {isGithubConfigured ? (
@@ -113,11 +173,11 @@ export const Footer: React.FC = () => {
                   rel="noreferrer"
                   className="inline-flex items-center gap-1 text-[11px] text-amber-400 hover:underline pt-1"
                 >
-                  <Github className="w-3.5 h-3.5" /> GitHub Repository <ExternalLink className="w-2.5 h-2.5" />
+                  <Github className="w-3.5 h-3.5" /> {language === 'ps' ? 'د ګیټ هب سرچینه' : language === 'ur' ? 'گٹ ہب ریپازٹری' : 'GitHub Repository'} <ExternalLink className="w-2.5 h-2.5" />
                 </a>
               ) : (
                 <span className="inline-flex items-center gap-1 text-[11px] text-slate-500 pt-1">
-                  <Github className="w-3.5 h-3.5" /> Repository Link Pending
+                  <Github className="w-3.5 h-3.5" /> {language === 'ps' ? 'ګیټ هب لینک' : language === 'ur' ? 'گٹ ہب لنک' : 'Repository Link'}
                 </span>
               )}
             </div>
@@ -129,7 +189,11 @@ export const Footer: React.FC = () => {
           <BookOpen className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
           <div className="font-urdu">
             <span className="font-bold text-slate-200 block mb-0.5">
-              {language === 'ur' ? 'دینی و تعلیمی وضاحتی بیان:' : 'Educational & Copyright Notice:'}
+              {language === 'ur'
+                ? 'دینی و تعلیمی وضاحتی بیان:'
+                : language === 'ps'
+                ? 'دیني او علمي وضاحت:'
+                : 'Educational & Copyright Notice:'}
             </span>
             {t('footerDisclaimer')}
           </div>
@@ -138,7 +202,12 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <div className="font-urdu">
-            © {new Date().getFullYear()} {APP_CONFIG.appName} ({APP_CONFIG.packageName}). {language === 'ur' ? 'جملہ حقوق محفوظ ہیں۔' : 'All rights reserved.'}
+            © {new Date().getFullYear()} {APP_CONFIG.appName} ({APP_CONFIG.packageName}).{' '}
+            {language === 'ur'
+              ? 'جملہ حقوق محفوظ ہیں۔'
+              : language === 'ps'
+              ? 'ټول حقوق خوندي دي.'
+              : 'All rights reserved.'}
           </div>
           <div className="flex items-center gap-4 text-slate-400">
             <Link to="/privacy-policy" className="hover:text-amber-300 transition-colors">{t('navPrivacy')}</Link>

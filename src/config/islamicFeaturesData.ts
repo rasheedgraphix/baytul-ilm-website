@@ -460,8 +460,8 @@ export const HARAMAIN_STREAMS = [
     locationArabic: 'المسجد الحرام - مكة المكرمة',
     descriptionUrdu: 'خانہ کعبہ اور طواف کی 24 گھنٹے براہِ راست باقاعدہ لائیو نشریات۔',
     descriptionPashto: 'د کعبې شریفې او طواف ۲۴ ساعته مستقیمې ژوندۍ خپرونې.',
-    streamEmbedUrl: 'https://www.youtube.com/embed/live_stream?channel=UCv0tL9gS4y7w-aYQjKeqwsg',
-    officialUrl: 'https://makkahlive.net',
+    streamEmbedUrl: 'https://win.holol.com/live/quran/index.m3u8',
+    officialUrl: 'https://win.holol.com/live/quran/index.m3u8',
     isLive: true
   },
   {
@@ -471,10 +471,10 @@ export const HARAMAIN_STREAMS = [
     titlePashto: 'مدینه منوره - مسجد نبوي شریف لایو',
     location: 'Masjid an-Nabawi, Madinah Munawwarah',
     locationArabic: 'المسجد النبوي الشريف - المدينة المنورة',
-    descriptionUrdu: 'روضہ اطہر اور گنبد خضریٰ کی براہِ راست ایم ڈی کوالٹی لائیو نشریات۔',
+    descriptionUrdu: 'روضہ اطہر اور گنبد خضریٰ کی براہِ راست ایچ ڈی کوالٹی لائیو نشریات۔',
     descriptionPashto: 'د روضې مبارکې او شنه ګنبد ۲۴ ساعته مستقیمې ژوندۍ خپرونې.',
-    streamEmbedUrl: 'https://www.youtube.com/embed/live_stream?channel=UCXw_T67V9Xm8E8t6XmB45yA',
-    officialUrl: 'https://madinahlive.net',
+    streamEmbedUrl: 'https://win.holol.com/live/sunnah/index.m3u8',
+    officialUrl: 'https://win.holol.com/live/sunnah/index.m3u8',
     isLive: true
   }
 ];

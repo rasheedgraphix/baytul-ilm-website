@@ -8,8 +8,26 @@ async function startServer() {
 
   // Health check endpoint
   app.get("/api/health", (_req, res) => {
-    res.json({ status: "ok", app: "Baytul Ilm AI Portal", version: "1.3.3" });
+    res.json({ status: "ok", app: "Baytul Ilm AI Portal", version: "1.4.4" });
   });
+
+  // Dedicated Sitemap XML endpoint with proper headers
+  app.get("/sitemap.xml", (_req, res) => {
+    const sitemapPath = path.resolve(process.cwd(), "public", "sitemap.xml");
+    res.header("Content-Type", "application/xml; charset=utf-8");
+    res.sendFile(sitemapPath);
+  });
+
+  // Dedicated Robots.txt endpoint
+  app.get("/robots.txt", (_req, res) => {
+    const robotsPath = path.resolve(process.cwd(), "public", "robots.txt");
+    res.header("Content-Type", "text/plain; charset=utf-8");
+    res.sendFile(robotsPath);
+  });
+
+  // Serve static assets from public folder directly with proper headers
+  const publicPath = path.resolve(process.cwd(), "public");
+  app.use(express.static(publicPath, { maxAge: "1d" }));
 
   // Vite middleware for development vs static serve for production
   if (process.env.NODE_ENV !== "production") {

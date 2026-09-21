@@ -3,10 +3,12 @@ import { SectionHeader } from '../components/common/SectionHeader';
 import { APP_CONFIG } from '../config/appConfig';
 import { Mail, Phone, MapPin, Youtube, User, ExternalLink, Send, Check, Info } from 'lucide-react';
 import { IslamicPatternBg } from '../components/layout/IslamicPatternBg';
+import { useLanguage } from '../context/LanguageContext';
 
 export const ContactPage: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const { language, isRtl } = useLanguage();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,6 +22,24 @@ export const ContactPage: React.FC = () => {
     setSubmitted(true);
   };
 
+  const getBadge = () => {
+    if (language === 'ps') return 'اړیکه او مرسته';
+    if (language === 'ur') return 'رابطہ اور تکنیکی معاونت';
+    return 'Get in Touch';
+  };
+
+  const getTitle = () => {
+    if (language === 'ps') return 'د اړیکې او تخنیکي ملاتړ څانګه';
+    if (language === 'ur') return 'رابطہ و رہنمائی پورٹل';
+    return 'Contact & Support Portal';
+  };
+
+  const getSubtitle = () => {
+    if (language === 'ps') return 'د اپلیکیشن په اړه خپلې نېکې مشورې، وړاندیزونه، ستونزې او پوښتنې موږ سره شریکې کړئ.';
+    if (language === 'ur') return 'ایپ کے بارے میں تجاویز، تکنیکی مسائل کی نشاندہی یا کتب و نصاب میں اضافے کے لیے ہم سے رابطہ کریں۔';
+    return 'Send feedback, report technical bugs, suggest syllabus additions, or reach out directly to our team.';
+  };
+
   return (
     <div className="pt-28 pb-20 space-y-12">
       {/* Header Banner */}
@@ -27,21 +47,21 @@ export const ContactPage: React.FC = () => {
         <IslamicPatternBg variant="hero" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4 text-center">
           <SectionHeader
-            badge="Get in Touch"
-            title="Contact & Support Portal"
+            badge={getBadge()}
+            title={getTitle()}
             arabicTitle="التَّوَاصُلُ وَالدَّعْمُ الفَنِّي"
-            subtitle="Send feedback, report technical bugs, suggest syllabus additions, or reach out directly to our team."
+            subtitle={getSubtitle()}
           />
         </div>
       </section>
 
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8" dir={isRtl ? 'rtl' : 'ltr'}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Contact Details & App Information */}
           <div className="space-y-6">
             <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800 space-y-4">
               <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100">
-                Direct Contact Information
+                {language === 'ps' ? 'د مستقیمې اړیکې معلومات' : language === 'ur' ? 'براہ راست رابطہ کی معلومات' : 'Direct Contact Information'}
               </h3>
 
               <div className="space-y-3 text-sm">
@@ -51,9 +71,11 @@ export const ContactPage: React.FC = () => {
                     <User className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-xs text-slate-500 block">Contact Name</span>
+                    <span className="text-xs text-slate-500 block">
+                      {language === 'ps' ? 'مسؤل / جوړوونکی' : language === 'ur' ? 'نامِ ڈیولپر' : 'Contact Name'}
+                    </span>
                     <span className="font-semibold text-slate-900 dark:text-slate-100">
-                      Nouman Ur Rasheed
+                      {language === 'ps' || language === 'ur' ? 'حافظ نعمان الرشید' : 'Nouman Ur Rasheed'}
                     </span>
                   </div>
                 </div>
@@ -67,7 +89,9 @@ export const ContactPage: React.FC = () => {
                     <Mail className="w-5 h-5" />
                   </div>
                   <div className="flex-1 overflow-hidden">
-                    <span className="text-xs text-slate-500 block">Email Address</span>
+                    <span className="text-xs text-slate-500 block">
+                      {language === 'ps' ? 'برېښنالیک پته' : language === 'ur' ? 'ای میل ایڈریس' : 'Email Address'}
+                    </span>
                     <span className="font-semibold text-slate-900 dark:text-slate-100 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 break-all flex items-center gap-1">
                       hafiznoumanrasheed@gmail.com <ExternalLink className="w-3 h-3 text-slate-400 shrink-0" />
                     </span>
@@ -85,8 +109,10 @@ export const ContactPage: React.FC = () => {
                     <Phone className="w-5 h-5" />
                   </div>
                   <div className="flex-1">
-                    <span className="text-xs text-slate-500 block">WhatsApp</span>
-                    <span className="font-semibold text-slate-900 dark:text-slate-100 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 flex items-center gap-1">
+                    <span className="text-xs text-slate-500 block">
+                      {language === 'ps' ? 'واټس‌اپ رابطه' : language === 'ur' ? 'واٹس ایپ رابطہ' : 'WhatsApp'}
+                    </span>
+                    <span className="font-semibold text-slate-900 dark:text-slate-100 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 flex items-center gap-1 font-mono">
                       03455067874 <ExternalLink className="w-3 h-3 text-slate-400 shrink-0" />
                     </span>
                   </div>
@@ -98,9 +124,11 @@ export const ContactPage: React.FC = () => {
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-xs text-slate-500 block">Location</span>
+                    <span className="text-xs text-slate-500 block">
+                      {language === 'ps' ? 'موقعیت / سیمه' : language === 'ur' ? 'مقام / پتہ' : 'Location'}
+                    </span>
                     <span className="font-semibold text-slate-900 dark:text-slate-100">
-                      Swabi, KPK, Pakistan
+                      {language === 'ps' ? 'صوابۍ، خیبر پښتونخوا، پاکستان' : language === 'ur' ? 'صوابی، خیبر پختونخوا، پاکستان' : 'Swabi, KPK, Pakistan'}
                     </span>
                   </div>
                 </div>
@@ -116,7 +144,9 @@ export const ContactPage: React.FC = () => {
                     <Youtube className="w-5 h-5" />
                   </div>
                   <div className="flex-1 overflow-hidden">
-                    <span className="text-xs text-slate-500 block">YouTube Channel</span>
+                    <span className="text-xs text-slate-500 block">
+                      {language === 'ps' ? 'یوټیوب چینل' : language === 'ur' ? 'یوٹیوب چینل' : 'YouTube Channel'}
+                    </span>
                     <span className="font-semibold text-slate-900 dark:text-slate-100 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 flex items-center gap-1 truncate">
                       @FactVerseMedia-r3c <ExternalLink className="w-3 h-3 text-slate-400 shrink-0" />
                     </span>
@@ -128,7 +158,8 @@ export const ContactPage: React.FC = () => {
             {/* Application Information Box */}
             <div className="bg-slate-900 text-white rounded-3xl p-6 border border-slate-800 space-y-3">
               <div className="flex items-center gap-2 text-emerald-400 font-bold text-sm">
-                <Info className="w-4 h-4" /> Application Identity
+                <Info className="w-4 h-4" />
+                <span>{language === 'ps' ? 'د اپلیکیشن مشخصات' : language === 'ur' ? 'ایپلیکیشن کی شناخت و تفصیل' : 'Application Identity'}</span>
               </div>
               <div className="space-y-1 text-xs text-slate-300 font-mono">
                 <div>App Name: {APP_CONFIG.appName}</div>
@@ -142,7 +173,7 @@ export const ContactPage: React.FC = () => {
           {/* Contact Form */}
           <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800 space-y-4">
             <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100">
-              Send Email Message
+              {language === 'ps' ? 'د برېښنالیک پیغام استول' : language === 'ur' ? 'ای میل پیغام بھیجیں' : 'Send Email Message'}
             </h3>
 
             {submitted ? (
@@ -150,27 +181,37 @@ export const ContactPage: React.FC = () => {
                 <div className="w-12 h-12 rounded-full bg-emerald-700 text-white flex items-center justify-center mx-auto font-bold">
                   <Check className="w-6 h-6" />
                 </div>
-                <h4 className="font-bold text-base">Opening Mail Client</h4>
+                <h4 className="font-bold text-base">
+                  {language === 'ps' ? 'د ایمیل سافټویر خلاص شو' : language === 'ur' ? 'ای میل کلائنٹ کھل گیا ہے' : 'Opening Mail Client'}
+                </h4>
                 <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-300">
-                  Your device's default email client has been launched with your message addressed to <strong>{APP_CONFIG.supportEmail}</strong>. Please confirm send inside your email app.
+                  {language === 'ps'
+                    ? `ستاسو پیغام چمتو شو او په ${APP_CONFIG.supportEmail} پته لېږلو ته تیار دی.`
+                    : language === 'ur'
+                    ? `آپ کا پیغام تیار ہے اور ${APP_CONFIG.supportEmail} پر ارسال کے لیے ای میل ایپ میں کھول دیا گیا ہے۔`
+                    : `Your device's default email client has been launched with your message addressed to ${APP_CONFIG.supportEmail}. Please confirm send inside your email app.`}
                 </p>
                 <div className="pt-2">
                   <a
                     href={`mailto:${APP_CONFIG.supportEmail}`}
                     className="inline-block px-4 py-2 rounded-xl bg-emerald-800 text-white text-xs font-bold hover:bg-emerald-900 transition-colors"
                   >
-                    Open Email Application Again
+                    {language === 'ps' ? 'د ایمیل ایپ بیا خلاصول' : language === 'ur' ? 'دوبارہ ای میل کھولیں' : 'Open Email Application Again'}
                   </a>
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4 text-xs sm:text-sm">
+              <form id="contact-inquiry-form" name="contactForm" onSubmit={handleSubmit} className="space-y-4 text-xs sm:text-sm">
                 <div className="space-y-1">
-                  <label className="font-semibold text-slate-700 dark:text-slate-300">Your Name</label>
+                  <label htmlFor="contact-name" className="font-semibold text-slate-700 dark:text-slate-300">
+                    {language === 'ps' ? 'ستاسو مبارک نوم' : language === 'ur' ? 'آپ کا نام' : 'Your Name'}
+                  </label>
                   <input
+                    id="contact-name"
+                    name="name"
                     type="text"
                     required
-                    placeholder="Taleb-e-Ilm"
+                    placeholder={language === 'ps' ? 'طالب العلم' : language === 'ur' ? 'طالب علم' : 'Taleb-e-Ilm'}
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-emerald-600"
@@ -178,8 +219,12 @@ export const ContactPage: React.FC = () => {
                 </div>
 
                 <div className="space-y-1">
-                  <label className="font-semibold text-slate-700 dark:text-slate-300">Email Address</label>
+                  <label htmlFor="contact-email" className="font-semibold text-slate-700 dark:text-slate-300">
+                    {language === 'ps' ? 'برېښنالیک (ای میل)' : language === 'ur' ? 'ای میل ایڈریس' : 'Email Address'}
+                  </label>
                   <input
+                    id="contact-email"
+                    name="email"
                     type="email"
                     required
                     placeholder="student@example.com"
@@ -190,11 +235,21 @@ export const ContactPage: React.FC = () => {
                 </div>
 
                 <div className="space-y-1">
-                  <label className="font-semibold text-slate-700 dark:text-slate-300">Message / Inquiry</label>
+                  <label htmlFor="contact-message" className="font-semibold text-slate-700 dark:text-slate-300">
+                    {language === 'ps' ? 'ستاسو پیغام یا وړاندیز' : language === 'ur' ? 'آپ کا پیغام / تجویز' : 'Message / Inquiry'}
+                  </label>
                   <textarea
+                    id="contact-message"
+                    name="message"
                     rows={4}
                     required
-                    placeholder="Describe your inquiry or feature suggestion..."
+                    placeholder={
+                      language === 'ps'
+                        ? 'خپله پوښتنه، مشوره یا وړاندیز دلته ولیکئ...'
+                        : language === 'ur'
+                        ? 'اپنی رائے، مسئلہ یا تجویز یہاں تحریر فرمائیں...'
+                        : 'Describe your inquiry or feature suggestion...'
+                    }
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-emerald-600"
@@ -206,7 +261,9 @@ export const ContactPage: React.FC = () => {
                   className="w-full py-3.5 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white font-bold transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md"
                 >
                   <Send className="w-4 h-4" />
-                  <span>Send via Email Client</span>
+                  <span>
+                    {language === 'ps' ? 'د ایمیل له لارې استول' : language === 'ur' ? 'ای میل کے ذریعے بھیجیں' : 'Send via Email Client'}
+                  </span>
                 </button>
               </form>
             )}

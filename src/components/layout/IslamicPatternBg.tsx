@@ -2,7 +2,7 @@ import React from 'react';
 
 interface IslamicPatternBgProps {
   className?: string;
-  variant?: 'subtle' | 'hero' | 'accent';
+  variant?: 'subtle' | 'hero' | 'accent' | 'gold';
 }
 
 export const IslamicPatternBg: React.FC<IslamicPatternBgProps> = ({
@@ -11,10 +11,12 @@ export const IslamicPatternBg: React.FC<IslamicPatternBgProps> = ({
 }) => {
   const opacityClass =
     variant === 'hero'
-      ? 'opacity-10'
-      : variant === 'accent'
       ? 'opacity-15'
-      : 'opacity-5';
+      : variant === 'accent'
+      ? 'opacity-20'
+      : variant === 'gold'
+      ? 'opacity-25'
+      : 'opacity-10';
 
   return (
     <div
@@ -22,7 +24,7 @@ export const IslamicPatternBg: React.FC<IslamicPatternBgProps> = ({
       aria-hidden="true"
     >
       <svg
-        className={`w-full h-full text-emerald-950 dark:text-emerald-300 ${opacityClass}`}
+        className={`w-full h-full ${variant === 'gold' ? 'text-amber-400' : 'text-emerald-400/80'} ${opacityClass}`}
         xmlns="http://www.w3.org/2000/svg"
         width="100%"
         height="100%"
@@ -30,28 +32,37 @@ export const IslamicPatternBg: React.FC<IslamicPatternBgProps> = ({
         <defs>
           <pattern
             id="islamic-star-pattern"
-            width="80"
-            height="80"
+            width="96"
+            height="96"
             patternUnits="userSpaceOnUse"
           >
-            {/* 8-pointed star and geometric lattice motif */}
+            {/* 8-pointed star and ornate geometric lattice motif */}
             <path
-              d="M40 0 L49 23 L73 15 L65 39 L80 57 L56 57 L40 80 L24 57 L0 57 L15 39 L7 15 L31 23 Z"
+              d="M48 0 L58 28 L86 18 L76 48 L96 68 L68 68 L48 96 L28 68 L0 68 L20 48 L10 18 L38 28 Z"
               fill="none"
               stroke="currentColor"
-              strokeWidth="1"
+              strokeWidth="1.2"
             />
             <path
-              d="M40 10 L46 27 L64 21 L58 39 L70 53 L51 53 L40 70 L29 53 L10 53 L22 39 L16 21 L34 27 Z"
+              d="M48 14 L55 33 L76 25 L69 48 L83 62 L60 62 L48 82 L36 62 L13 62 L27 48 L20 25 L41 33 Z"
               fill="none"
               stroke="currentColor"
-              strokeWidth="0.5"
+              strokeWidth="0.6"
+              strokeDasharray="2,2"
             />
-            <circle cx="40" cy="40" r="6" fill="none" stroke="currentColor" strokeWidth="0.75" />
-            <circle cx="0" cy="0" r="8" fill="none" stroke="currentColor" strokeWidth="0.5" />
-            <circle cx="80" cy="0" r="8" fill="none" stroke="currentColor" strokeWidth="0.5" />
-            <circle cx="0" cy="80" r="8" fill="none" stroke="currentColor" strokeWidth="0.5" />
-            <circle cx="80" cy="80" r="8" fill="none" stroke="currentColor" strokeWidth="0.5" />
+            {/* Central Octagon & Rosette */}
+            <circle cx="48" cy="48" r="8" fill="none" stroke="currentColor" strokeWidth="0.8" />
+            <circle cx="48" cy="48" r="3" fill="currentColor" opacity="0.4" />
+            
+            {/* Corner Stars */}
+            <circle cx="0" cy="0" r="10" fill="none" stroke="currentColor" strokeWidth="0.6" />
+            <circle cx="96" cy="0" r="10" fill="none" stroke="currentColor" strokeWidth="0.6" />
+            <circle cx="0" cy="96" r="10" fill="none" stroke="currentColor" strokeWidth="0.6" />
+            <circle cx="96" cy="96" r="10" fill="none" stroke="currentColor" strokeWidth="0.6" />
+            
+            {/* Diagonal interconnecting lines */}
+            <line x1="0" y1="0" x2="96" y2="96" stroke="currentColor" strokeWidth="0.4" opacity="0.3" />
+            <line x1="96" y1="0" x2="0" y2="96" stroke="currentColor" strokeWidth="0.4" opacity="0.3" />
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#islamic-star-pattern)" />

@@ -15,7 +15,7 @@ export const PhoneMockupFrame: React.FC<PhoneMockupFrameProps> = ({
   const [activeTab, setActiveTab] = useState(initialTab);
 
   return (
-    <div className={`relative mx-auto max-w-[320px] sm:max-w-[340px] ${className}`}>
+    <div className={`relative mx-auto w-full max-w-[280px] sm:max-w-[340px] ${className}`}>
       {/* Outer Phone Hardware Shell */}
       <div className="relative bg-slate-900 rounded-[44px] p-3 shadow-2xl ring-1 ring-slate-800 shadow-emerald-950/20 border-4 border-slate-800/80">
         {/* Camera Punchhole & Ear Speaker Notch */}
@@ -193,10 +193,13 @@ export const PhoneMockupFrame: React.FC<PhoneMockupFrameProps> = ({
                 </div>
                 <div className="p-1.5 rounded-lg bg-slate-900 border border-slate-800 flex items-center gap-1">
                   <input
+                    id="mockup-chat-input"
+                    name="mockupChat"
                     type="text"
                     disabled
                     placeholder="Ask about Sarf, Nahw, Fiqh..."
                     className="bg-transparent text-[10px] flex-1 text-slate-300 focus:outline-none"
+                    aria-label="Mockup Input"
                   />
                   <div className="w-5 h-5 rounded bg-emerald-700 text-white flex items-center justify-center text-[9px] font-bold">
                     ↑
